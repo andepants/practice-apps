@@ -24,11 +24,21 @@ const App = () => {
       })
   }, [])
 
+  const postAddWord = (newWord, newDef) => {
+    console.log('inside postAddWord', newWord, newDef)
+    // axios.post('/words')
+    // .then(res => {
+    //   console.log('postAddWords res is: ', )
+    // }).catch(err => {
+    //   console.log('err in POST Add words', err);
+    // })
+  }
+
 
   return (
     <div>
       <h1>Glossary</h1>
-      <AddWord/>
+      <AddWord postAddWord={postAddWord}/>
       <WordBank wordBank={wordBank}/>
     </div>
     //document.getElementById("root")

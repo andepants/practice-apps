@@ -9,11 +9,11 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
 
 app.get('/words', (req, res) => {
-  res.send('hiii');
+  res.send('The Get is working');
 })
 app.post('/words', (req, res) => {
   console.log(req.body);
-  res.send('hiiiiiiii');
+  res.send('The Post is working');
 })
 
 /****
