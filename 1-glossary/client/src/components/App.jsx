@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import WordBank from '../components/WordBank.jsx'
+import AddWord from '../components/AddWord.jsx'
 
 let exGlossary = [
   {word: 'avocado', def: 'a delicious healthy treat'},
@@ -27,6 +28,7 @@ const App = () => {
   return (
     <div>
       <h1>Glossary</h1>
+      <AddWord/>
       <WordBank wordBank={wordBank}/>
     </div>
     //document.getElementById("root")
