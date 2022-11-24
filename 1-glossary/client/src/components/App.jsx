@@ -14,7 +14,10 @@ const App = () => {
   const [wordBank, setWordBank] = useState(exGlossary);
 
   useEffect(() => {
-    console.log('hello');
+    getAllWords();
+  }, [])
+
+  const getAllWords = () => {
     axios.get('/words')
       .then(res => {
         console.log(res.data);
@@ -22,16 +25,18 @@ const App = () => {
       .catch(err => {
         console.log('err', err);
       })
-  }, [])
+  }
 
   const postAddWord = (newWord, newDef) => {
     console.log('inside postAddWord', newWord, newDef)
-    // axios.post('/words')
-    // .then(res => {
-    //   console.log('postAddWords res is: ', )
-    // }).catch(err => {
-    //   console.log('err in POST Add words', err);
-    // })
+    axios.post('/words', {
+      word: newWord,
+      def: newDef
+    }).then(response => {
+      console.log('(App) sent over post request', response);
+    }).catch(error => {
+       console.log('(App) error in post request', error);
+    })
   }
 
 

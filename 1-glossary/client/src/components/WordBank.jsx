@@ -1,7 +1,7 @@
 import React from "react";
 
 const WordBank = ({wordBank}) => {
-  console.log('this is wordBank inside wordBank', (wordBank));
+  //console.log('this is wordBank inside wordBank', (wordBank));
   return (
     <div>
       {wordBank.map((word, index) => {
