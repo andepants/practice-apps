@@ -38,7 +38,17 @@ let save = (words) => {
   }
 }
 
+// let retrieve = () => {
+//   return Glossary.find();
+//     // .then(result => {
+//     //   console.log('the result in retrieve is: ', result);
+//     // }).catch(err => {
+//     //   console.log('err in retrieve', err);
+//     // })
+// }
+
 // 3. Export the models
 module.exports.Glossary = Glossary;
 module.exports.save = save;
+//module.exports.retrieve = retrieve;
 // 4. Import the models into any modules that need them

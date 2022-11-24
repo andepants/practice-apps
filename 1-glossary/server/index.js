@@ -12,8 +12,26 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
 
 app.get('/words', (req, res) => {
-  res.send('The Get is working');
+  //console.log('glossary.find() aaaaa is ', Glossary.find());
+  Glossary.find()
+    .then(data => {
+      console.log('the data isaaaaa', data);
+      res.send(data);
+    }).catch(err => {
+      res.status(400).send('error in server side get', err);
+    })
+  //res.send('The Get is working');
 })
+
+app.delete('/words', (req, res) => {
+  Glossary.deleteOne(req.body)
+    .then(response => {
+      res.send('Got a DELETE request at /words' + req.body);
+    }).catch(err => {
+      res.send('got an error in delete');
+    })
+})
+
 app.post('/words', (req, res) => {
   //Glossary.collection.insertOne({word: 'hello', def: 'def test'}) other way to save to db
   //save({word: 'hello', def: 'def test'})
@@ -24,6 +42,19 @@ app.post('/words', (req, res) => {
        res.send('(server)The Post is working' + req.body);
     }).catch(error => {
       res.send('(server)error in post on server side');
+    })
+})
+
+
+//https://stackoverflow.com/questions/22278761/mongoose-difference-between-save-and-using-update
+//save vs update explanation ^^
+app.patch('/words', (req, res) => {
+  //Glossary.update(Glossary.find({'word':'testingOne'}), {_id: '637fedc20a68b5cfe3f7d15d', word: 'testingOne', def: 'new def', __v: 0})
+  Glossary.update(Glossary.find({"word": req.body.word}), req.body)
+    .then(response => {
+      res.send('/words PATCH worked' + req.body);
+    }).catch(error => {
+      res.send('/words PATCH ERROR');
     })
 })
 
