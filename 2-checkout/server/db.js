@@ -19,6 +19,9 @@ db.connectAsync()
       "CREATE TABLE IF NOT EXISTS responses (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY)"
     )
   )
+  // .then(()) => {
+  //   console.log('successful connection');
+  // })
   .catch((err) => console.log(err));
 
 module.exports = db;
